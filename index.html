@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:orangered">
+        <a class="navbar-brand" href="#" style="font-weight:bold" id="home-button">Hack or Snooze</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id='submit-dropdown'>submit <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id='favorites'>favorites</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id='my-stories'>my stories</a>
+                </li>
+            </ul>
+            <form id="login-form" class="form-inline my-2 my-lg-0" action="">
+              <input class="form-control mr-sm-2" type="text" placeholder="username" aria-label="username" id="username">
+              <input class="form-control mr-sm-2" type="text" placeholder="password" aria-label="password" id="password">
+              <input class="btn btn-outline-success my-2 my-2m-0" type="submit" value="Login" id="login">
+            </form>
+            <button class="btn btn-outline-info my-2 my-2m-0 ml-2 hidden-item" data-toggle="modal" data-target="#profile-modal" id="view-profile">View Profile</button>
+            <button class="btn btn-outline-dark my-2 my-2m-0 ml-2" id="signup">Sign-up</button>
+        </div>
+    </nav>
+    <div class="modal" tabindex="-1" role="dialog" id="profile-modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div id='profile-div'>
+                     <p>Name: <span id='profile-name'></span></p>
+                     <p>Username: <span id='profile-username'></span></p>
+                </div>
+                <form action="" id="edit-profile-form" class='hidden-item'>
+                    <label for="name" class="col-1 col-form-label text-center">Name</label>
+                    <input class="form-control mr-sm-2" type="text" placeholder="" aria-label="name" id="edit-name">
+                    <label for="new-password" class="col-1 col-form-label text-center">New Password</label>
+                    <input class="form-control mr-sm-2" type="text" placeholder="" aria-label="new-password" id="edit-new-password">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="edit-profile">Edit Profile</button>
+                <button type="button" class="btn btn-primary hidden-item" id="save-profile" data-toggle="modal" data-target="#profile-modal">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form id="signup-form" style="display: none">
+        <div class="form-group d-flex row justify-content-start">
+            <label for="name-input" class="col-1 col-form-label text-center">Name</label>
+            <div class="col-4">
+                <input class="form-control" type="text" id="name-input">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-start">
+            <label for="username-input" class="col-1 col-form-label text-center">Username</label>
+            <div class="col-4">
+                <input class="form-control" type="text" id="username-input">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-start">
+          <label for="password-input" class="col-1 col-form-label text-center">Password</label>
+          <div class="col-4">
+              <input class="form-control" type="text" id="password-input">
+          </div>
+      </div>
+        <button type="submit" class="btn btn-danger" id="submit-signup-button">
+            Submit
+        </button>
+    </form>
+    <form id="submit-form" style="display: none">
+        <div class="form-group d-flex row justify-content-start">
+            <label for="title-input" class="col-1 col-form-label text-center">title</label>
+            <div class="col-4">
+                <input class="form-control" type="text" id="title">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-start">
+            <label for="url-input" class="col-1 col-form-label text-center">url</label>
+            <div class="col-4">
+                <input class="form-control" type="url" id="url">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-danger" id="submit-story-button">
+            Submit
+        </button>
+    </form>
+    <div class="container-fluid">
+        <ol id="story-list">
+        </ol>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="api-classes.js"></script>
+    <script src="dom.js"></script>
+</body>
+</html>
+
+
+

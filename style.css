@@ -1,0 +1,27 @@
+body {
+  background-color: cornsilk;
+}
+.link-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+.link-url {
+  font-size: 10px;
+  color: gray;
+}
+.container-fluid {
+  margin-left: -20px;
+}
+li {
+  padding: 5px;
+}
+#hidden-form {
+  padding: 10px 10px;
+}
+input,
+textarea {
+  background-color: white;
+}
+.hidden-item {
+  display: none;
+}
